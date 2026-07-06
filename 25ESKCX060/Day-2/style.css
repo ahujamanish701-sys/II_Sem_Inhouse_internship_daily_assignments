@@ -1,1 +1,49 @@
-
+p{
+            font-size: 30px;
+            font-family: 'Segoe UI', Tahome, Geneva, Verdana, sans-serif;
+            font-weight: bold  !important ; 
+            text-align: center;
+            
+     }
+    *{
+        font-family:Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        text-align: left;
+        margin-top: 10px;
+        
+    }
+    .background{
+        background-color: #FFFFFF;
+        margin-left: 25%;
+    
+    }
+    body{
+        background-color: #27187b;
+    }
+    #frmRegister{
+        color: #374151;
+        width: 600px;
+        height: 700px;
+        border-radius: 0%;
+        padding-left: 10px ;
+    }
+    #btnsubmit{
+        color:#FFFFFF;
+        background-color: #2563EB;
+        width: 590px;
+        text-align: center;
+    }
+    h1{
+        font-size: 40px;
+        text-align: center; 
+    }
+    #txtname{
+        width: 500px;
+        
+    }
+    .dtDOB{
+        padding-left: 230px !important;
+    }
+    #txtphone{
+        width: 300px;
+    }
