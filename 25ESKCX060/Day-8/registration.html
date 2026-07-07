@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <section class="hero">
+            <aside class="hero-card">
+                <div class="card-header">
+                    <p class="eyebrow">Registration</p>
+                    <h2>Get started today</h2>
+                </div>
 
+                <form method="post" novalidate action="registration.php" class="form" enctype="multipart/form-data">
+                    <div class="form-grid">
+                        <label for="txtName">Full name</label>
+                        <input type="text" id="txtName" name="name" placeholder="Enter Name" required>
+
+                        <label for="txtEmail">Email address</label>
+                        <input type="email" id="txtEmail" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <div class ="form-group">
+                        <label for="branch">Branch</label>
+                        <select name="branch" id="branch">
+                        <option value="">Select Branch</option>
+                        <option value="DS">DS</option>
+                        <option value="IOT">IOT</option>
+                        <option value="AI">AI</option>
+                        <option value="CSE">CSE</option>
+                        </select>
+                    </div>
+
+                    <div class="field-group">
+                        <div class="field-half">
+                            <label for="dtDOB">Date of birth</label>
+                            <input type="date" id="dtDOB" name="dob">
+                        </div>
+                        <div class="field-half">
+                            <label>Gender</label>
+                            <div class="radio-group" role="radiogroup" aria-label="Gender">
+                                <label><input type="radio" name="gender" value="male" checked> Male</label>
+                                <label><input type="radio" name="gender" value="female"> Female</label>
+                                <label><input type="radio" name="gender" value="other"> Other</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <label for="txtPhoneNumber">PhoneNumber</label>
+                    <input type="tel" id="txtPhoneNumber" name="phoneNumber" placeholder="Enter your phone number" required>
+
+                    <label for="Myfile">Profile Picture</label>
+                    <input type="file" id="Myfile" name="Myfile" accept="image/*" required>
+                   <!-- <button type="button" onclick="previewFile()">Preview Upload</button>--> 
+                    <div id="filePreview"></div>
+
+                    <div class="actions">
+                        <button type="submit" class="primary">Create account</button>
+                    </div>
+
+                    <p class="note">By creating an account, you agree to our <a href="#">terms of service</a> and <a href="#">privacy policy</a>.</p>
+                </form>
+            </aside>
+        </section>
+    </div>
+
+  <!--  <script>
+        function previewFile() {
+            const fileInput = document.getElementById('Myfile');
+            const preview = document.getElementById('filePreview');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                preview.innerHTML = '<p style="color: red;">Please select a file first.</p>';
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.innerHTML = '<p style="color: green;">✓ File selected: ' + file.name + '</p>' +
+                                    '<img src="' + e.target.result + '" style="max-width: 200px; margin-top: 10px;">';
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>-->
+</body>
+</html>
