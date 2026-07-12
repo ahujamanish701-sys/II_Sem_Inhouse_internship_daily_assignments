@@ -1,57 +1,53 @@
-<?php 
-
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    session_start();
-}
-
-include ('db_connect.php');
+<?php
+include("db_connect.php");
 $error = "";
-$new_password="";
-$confirm_new_password = "";
-$current_password = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $new_password = $_POST["new_password"];
-    $confirm_new_password = $_POST["confirm_new_password"];
-    $current_password = $_POST["current_password"];
+if($_SERVER["REQUEST_METHOD"]=="POST"){
 
-    // Validate passwords
-    if (empty($new_password) || empty($confirm_new_password) || empty($current_password)) {
-        $error = "Please fill in all fields.";
-    } else {
-        if ($new_password !== $confirm_new_password) {
-            $error = "New passwords do not match.";
-            echo $error;
-        } elseif (empty($_SESSION['user_id'])) {
-            echo "User session not found.";
-        } else {
-            $user_id = intval($_SESSION['user_id']);
-            $selectQuery = "SELECT * FROM user WHERE id = $user_id";
+$name = mysqli_real_escape_string($conn, $_POST["name"]);
+$email = mysqli_real_escape_string($conn, $_POST["email"]);
+$password =  mysqli_real_escape_string($conn, $_POST["password"]);
+$confirmpassword =  mysqli_real_escape_string($conn, $_POST["confirmpassword"]);
 
-            $result = mysqli_query($conn, $selectQuery);
-            $user = mysqli_fetch_assoc($result);
-            
-            if ($user && $user["password"] === $current_password) {
-                $new_password_safe = mysqli_real_escape_string($conn, $new_password);
-                $updateQuery = "UPDATE user SET password = '$new_password_safe' WHERE id = $user_id";
 
-                mysqli_query($conn, $updateQuery);
-                header("Location: updateSuccess.php");
-                exit();
-            } elseif ($user) {
-                echo "Current password is incorrect.";
-            } else {
-                echo "User not found.";
-                echo "Error: " . mysqli_error($conn);
-            }
-        }
-    }
+
+if( $name== "" || $email == "" || $password == "" || $confirmpassword == ""  ){
+    $error = "All fields are required.";
+    echo $error;
+}else if(strlen($password) < 8){
+    echo "Password must be at least 8 characters long.";
 }
-            
-           
 
-            
+else if(!preg_match('/[A-Z]/', $password)){
+    echo "Password must contain at least one uppercase letter.";
+}
+
+else if(!preg_match('/[a-z]/', $password)){
+    echo "Password must contain at least one lowercase letter.";
+}
+
+else if(!preg_match('/[0-9]/', $password)){
+    echo "Password must contain at least one number.";
+}
+
+else if($password != $confirmpassword){
+  
+    echo "Passwords do not match.";
+}
+else{
+    $insertQuery = "Insert into user(name,email,password) values('$name','$email','$password')";
+
+    $result=mysqli_query($conn,$insertQuery);
+
+    if($result){
+        header("Location: success.php");
+    }else{
+        echo "ERROR occured while storing data";
+        echo "ERROR:" . mysqli_error($conn);
+        exit();
+        }
+        
+    
+}   
+}
 ?>
-     
-
-
