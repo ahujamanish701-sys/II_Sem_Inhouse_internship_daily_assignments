@@ -1,1 +1,19 @@
+body {
+  background: #f7f9fb;
+}
+.search-card {
+  border: 1px solid #e5eaf2;
+  border-radius: 8px;
+  background: #fff;
+}
+.result-row:hover {
+  background: #f1f7ff;
+}
+.small-muted {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+#no-results {
+  display: none;
+}
 
