@@ -1,11 +1,3 @@
-<?php 
-session_start();
-
-if(!isset ($_SESSION['user_name'])){
-    header("Location: login.php");
-    exit();
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,11 +42,11 @@ if(!isset ($_SESSION['user_name'])){
             <nav>
                 <ul class="nav">
                     <li class="nav-item">
-                        <a href="home.php" class="nav-link text-dark">Home</a>
+                        <a href="index.php" class="nav-link text-dark">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="aboutus.php">About us</a>
+                        <a class="nav-link text-dark" href="about.php">About us</a>
                     </li>
 
                     <li class="nav-item">
@@ -67,8 +59,3 @@ if(!isset ($_SESSION['user_name'])){
     </div>
 
 </header>
-
-
-
-
-                     
